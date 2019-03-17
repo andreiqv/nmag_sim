@@ -1,0 +1,71 @@
+% стили для теорем
+
+\newtheoremstyle{plain1}% name
+  {9pt}%      Space above, empty = `usual value'
+  {9pt}%      Space below
+  {\itshape}% Body font
+  {\parindent}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5em}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{plain1}
+
+\newtheoremstyle{definition1}% name
+  {9pt}%      Space above, empty = `usual value'
+  {9pt}%      Space below
+  {} % Body font
+  {\parindent}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5em}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{definition1}
+
+\newtheoremstyle{remark1}% name
+  {9pt}%      Space above, empty = `usual value'
+  {9pt}%      Space below
+  {} % Body font
+  {\parindent}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\itshape}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5em}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{remark1}
+
+\theoremstyle{plain1}  % курсив
+\newtheorem{theorem}{Теорема}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Следствие}
+
+\theoremstyle{plain1}  % курсив
+\newtheorem{primer}[theorem]{Пример}
+\newtheorem{zad}[theorem]{}
+\newtheorem{conj}[theorem]{Гипотеза}
+\newtheorem{ques}[theorem]{Вопрос}
+\newtheorem{probl}[theorem]{Проблема}
+\newtheorem{fact}[theorem]{Факт}
+\newtheorem{thr}{Т.}
+\newtheorem{thm}{Т.}
+\newtheorem{theor}{Тeорема}
+\newtheorem{lem}[theorem]{Л.}
+\newtheorem{stat}[theorem]{Утв.} 
+\newtheorem{cor}[theorem]{Сл.}
+\newtheorem{prop}[theorem]{Предл.}
+\newtheorem{predl}[theorem]{Предложение}
+
+\theoremstyle{definition1}  % прямой шрифт
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{defin}[theorem]{Определение}  
+
+\theoremstyle{remark1}  % прямой шрифт
+\newtheorem{remark}[theorem]{Замечание}
+\newtheorem{rmk}[theorem]{Замеч.} 
+\newtheorem{example}[theorem]{Пример}  
+\newtheorem{ex}[theorem]{Пр.}  
+
+
+\renewcommand{\proofname}{Док-во} 
+
+
