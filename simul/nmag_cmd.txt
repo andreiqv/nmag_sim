@@ -1,0 +1,56 @@
+
+
+
+полный путь:
+/mnt/lin2/progs/nmag-0.2.1/nsim/bin/nsim file1.py
+или
+./nsim/bin/nsim sphere1.py 
+или
+./nsim/bin/nsim sphere1.py --clean
+(если симуляция запускалось до этого)
+
+
+Теперь можем создать дамп в формате vtk и открыть его с помощью mayavi:
+nmagpp --dump sphere1
+nmagpp --vtk sphere1.vtk sphere1
+mayavi2 -d sphere1-000000.vtk
+Можно сразу задать, чтобы выводились оси и векторное поле:
+mayavi2 -d sphere1-000000.vtk -m Axes -m OrientationAxes -m Vectors -m Surface
+mayavi2 -d  -m Axes -m OrientationAxes -m Vectors -m Surface
+
+
+
+
+-----------------
+
+@* Создание сетки
+
+Для этого используется утилита netgen, однако ее не так просто установить. Я использовал netgen, который был на образе ubuntu, что я скачал с сайта.
+
+Пример файла geo, задающий геометрю цилиндра.
+<code>
+#
+## a cylinder
+#
+algebraic3d
+
+# cut cylinder by planes:
+
+solid fincyl = cylinder ( 50, 0, 0; -50, 0, 0; 20 )
+	and plane (50, 0, 0; 1, 0, 0)
+	and plane (-50, 0, 0; -1, 0, 0)  - maxh=3.0;
+
+tlo fincyl;
+</code>
+
+Открываем его с помощью утилиты netgen, нажимаем создание сетки и эксперт сетки (export mesh) - сохраняем в формате neutral. 
+Затем необходимо конвертировать neutral в формат h5:
+nmeshimport --netgen cyl.neutral cyl.nmesh.h5
+
+
+--------
+
+Я посмотрел, что означает цвет. По умолчанию это величина "crystal anisotropy energy density". Там есть еще другие виды энергий на выбор, но чтобы привязать цвет в направлению векторного поля такого не нашел. Можно конечно вообще убрать цвет. Для визиализации данных здесь используется отдельная программа mayavi.
+
+
+  
