@@ -20,18 +20,17 @@ def scalar_product(a, b): return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 sc = scalar_product
 
 
-Ms0 = 1400e3   # A/m
-A_ex = 1.54e-11	# J/m
-kmc = 2.37*1e5
+# for pure Co
+#Ms0 = 1400e3   # A/m
+#A_ex = 1.54e-11	# J/m
+#kmc = 2.37*1e5
 
-"""
 # CoPt(5%)
 Ms0 = 1330e3   # A/m
 A_ex = 1.46e-11	# J/m
 kmc = 2.0e5 # J/m3
-"""
 
-tau = -5.0  # in GPa
+tau = -2.0  # in GPa
 #tau=-10.0  # in GPa
 #tau=-15.0  # in GPa
 #tau=-18.0  # in GPa
