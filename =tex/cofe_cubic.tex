@@ -2,10 +2,13 @@
 \usepackage[left=1.1cm,right=1.1cm,top=1cm,bottom=1.7cm,bindingoffset=0cm]{geometry}
 \usepackage[russian]{babel} \usepackage[all,arc]{xy}
 \usepackage{latexsym,amssymb,amsmath} %\usepackage{showkeys} 
-\usepackage{style} \usepackage{comment,graphics} 
-\usepackage{graphicx} 
+\usepackage{style} 
+\usepackage{comment} 
+\usepackage{graphics} 
+\usepackage[pngtex]{graphicx}
+\usepackage{grffile}
+
 \usepackage{hyperref} 
-%\usepackage[pngtex]{graphicx}
 \input{style_thm.tex}
 \renewcommand{\small}{\fontsize{11}{13.0pt}\selectfont} % размер шрифтов
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}%
@@ -14,7 +17,7 @@
 \footskip=30pt
 \begin{document}
 [\today]
-\title{Кобальт с кубической анизотропией (fcc)}
+\title{CoFe. Кубическая решетка}
 \maketitle \pagestyle{plain}
 % -- НАЧАЛО ДОКУМЕНТА --
 
@@ -26,7 +29,6 @@
 
 \vspace{10mm}
 \section{Модель}
-
 
 Энергия кристаллографической и магнитоупругой энергии кубического кристалла в общем случае имеют вид соответственно
 
@@ -103,12 +105,34 @@ $B_1 = - \frac{3}{2} \lm_{100} (c_{11} - c_{12}) \approx -16.43 \times 10^{6} ~ 
 % B1 = - 3/2 * lm100 * (c11 - c12)
 
 
+\section{Результаты моделирования для CoFe с кубической решеткой}
+
+\subsection{диаметр 20 нм; длина 100 нм}
+
+Начальное направление намагниченности --- вдоль оси цилиндра ($m_0 = [1, 1, 1]$). Шаг сетки $h=$  2 нм.
+
+При боковом сжатии возможно только однородное состояние вдоль оси цилиндра. При растяжении возможно неоднородное состояние:
+
+\subsubsection{$\tau = +0.5$ GPa (растяжение)}$~$
+
+\includegraphics[scale=0.5]{pict/d20h100p+0.5GPa.png}
+
+\newpage
+\subsubsection{$\tau = +3.0$ GPa (растяжение)}$~$
+
+\includegraphics[scale=0.5]{pict/d20h100p+3.0GPa.png}
+
+\subsubsection{$\tau = +5.0$ GPa (растяжение)}$~$
+
+\includegraphics[scale=0.5]{pict/d20h100p+5.0GPa.png}
 
 
+
+
+\begin{comment}
 \vspace{5mm}
 
 %Начальное направление намагниченности для определенности будем брать [1, 1, 1], т.е. вдоль оси цилиндра (ось $z$), поскольку в отсутствие внешних воздействий это состояние является основным.
-
 
 \subsection{$D=10$ нм, $H=20$ нм}
 
@@ -150,7 +174,8 @@ H,nm 		& aspect rat.	& $\sigma$, GPa\\ \hline
 \end{tabular}
 \end{center}
 
-
+ 
+\end{comment}
 \newpage
 
 \section{Реализация в NMAG}
@@ -158,40 +183,39 @@ H,nm 		& aspect rat.	& $\sigma$, GPa\\ \hline
 Для кубической решетки
 
 \begin{verbatim}
-Ms0 = 490e3   # A/m
-A_ex = 9.0e-12	# J/m
-kmc = 1000 # = 10^3 J/m^3
+def scalar_product(a, b): return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 
-K1=SI(kmc, "J/m^3")
+sc = scalar_product
+Ms0 = 1680e3   # A/m
+A_ex = 1.54e-11	# J/m
+kmc = 0.45e5 # J/m^3 - MCA
+tau = 5.0  # in GPa 
 
-ex = [1, 0, 0] 
+start_magn_dir = [1, 1, 1]
+K1 = SI(kmc, "J/m^3")
+#K2=SI(2.00*1e5, "J/m^3")
+
+ex = [1, 0, 0]  # = norm_axis
 ey = [0, 1, 0]
 ez = [0, 0, 1]
 
-B1 = SI(9.38 * 1e6, "J/m^3") 	
+B1 = SI(-16.43 * 1e6, "J/m^3") 
 
 (n1, n2, n3) = (ex, ey, ez) 
+eps1 = 0.00530228  * tau
+eps2 = 0.00530228  * tau
+eps3 = -0.00668238 * tau	
 
-eps1 = 0.00464  * tau
-eps2 = 0.00464 * tau
-eps3 = -0.00566  * tau	
-
-# задание анизотропии:
 def my_anisotropy(m):
 	a1 = sc(m, n1)
 	a2 = sc(m, n2)
 	a3 = sc(m, n3)
-	return K1*( a1**2 * a2**2 + a1**2 * a3**2 + a2**2 * a3**2 ) 
-	+ B1*(a1**2 * eps1 + a2**2 * eps2 + a3**2 * eps3)
-	
-Ni = nmag.MagMaterial(name="Ni", Ms=SI(Ms0, "A/m"), exchange_coupling=SI(A_ex, "J/m"),
-          anisotropy=my_anisotropy, anisotropy_order=4)
+	return K1*( a1**2 * a2**2 + a1**2 * a3**2 + a2**2 * a3**2 ) + B1*(a1**2 * eps1 + a2**2 * eps2 + a3**2 * eps3)
+
 \end{verbatim}
 
 
-
-\newpage
-
+%-----------
 \begin{thebibliography}{10}
 
 \bibitem{Jones} N.J. Jones and other, Magnetostrictive performance of additively manufactured CoFe rods using the LENSTM system / AIP Advances 8, 056403 (2018) (\url{https://doi.org/10.1063/1.5007673})
