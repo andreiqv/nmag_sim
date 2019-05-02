@@ -168,4 +168,5 @@ for i in range(0,5):
 	os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (d, f))
 
 print('---------------------')
+print('hex_axis = {}'.format(hex_axis))
 print('tau = {}'.format(tau))	
