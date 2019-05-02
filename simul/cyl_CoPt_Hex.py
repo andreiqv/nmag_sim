@@ -37,7 +37,7 @@ Ms0 = 1400e3   # A/m
 A_ex = 1.386e-11	# J/m
 kmc = 2.0e5 # J/m3
 
-tau = -10.0  # in GPa
+tau = -5.0  # in GPa
 #tau=-10.0  # in GPa
 #tau=-15.0  # in GPa
 #tau=-18.0  # in GPa
@@ -47,7 +47,7 @@ tau = -10.0  # in GPa
 start_magn_dir = [1,1,1]
 
 
-hex_axis = 'X'  # direction of the hexagonal axis
+hex_axis = 'Z'  # direction of the hexagonal axis
 print('hex_axis = ' + hex_axis)
 
 fw = open('_out.txt', 'a')
