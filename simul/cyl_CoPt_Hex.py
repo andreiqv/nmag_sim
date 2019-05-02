@@ -25,9 +25,16 @@ sc = scalar_product
 #A_ex = 1.54e-11	# J/m
 #kmc = 2.37*1e5
 
+"""
 # CoPt(5%)
 Ms0 = 1330e3   # A/m
 A_ex = 1.46e-11	# J/m
+kmc = 2.0e5 # J/m3
+"""
+
+# CoNi(5%)
+Ms0 = 1400e3   # A/m
+A_ex = 1.386e-11	# J/m
 kmc = 2.0e5 # J/m3
 
 tau = -10.0  # in GPa
