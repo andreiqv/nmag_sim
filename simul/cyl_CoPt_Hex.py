@@ -30,7 +30,7 @@ Ms0 = 1330e3   # A/m
 A_ex = 1.46e-11	# J/m
 kmc = 2.0e5 # J/m3
 
-tau = -15.0  # in GPa
+tau = -10.0  # in GPa
 #tau=-10.0  # in GPa
 #tau=-15.0  # in GPa
 #tau=-18.0  # in GPa

@@ -140,4 +140,5 @@ for i in range(0,5):
 
 
 print('---------------------')
-print('tau = {}'.format(tau))
+print('hex_axis = {}'.format(hex_axis))
+print('tau = {}'.format(tau))	
