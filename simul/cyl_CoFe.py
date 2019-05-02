@@ -137,3 +137,7 @@ d = 0.2
 for i in range(0,5):
 	f = 1200 if i%2==0 else 1500	
 	os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (d, f))
+
+
+print('---------------------')
+print('tau = {}'.format(tau))

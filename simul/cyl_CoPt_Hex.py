@@ -23,7 +23,7 @@ Ms0 = 1330e3   # A/m
 A_ex = 1.46e-11	# J/m
 kmc = 2.0e5 # J/m3
 
-tau = -0.0  # in GPa
+tau = -12.0  # in GPa
 #tau=-10.0  # in GPa
 #tau=-15.0  # in GPa
 #tau=-18.0  # in GPa
@@ -159,3 +159,6 @@ d = 0.2
 for i in range(0,5):
 	f = 1200 if i%2 == 0 else 1500	
 	os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (d, f))
+
+print('---------------------')
+print('tau = {}'.format(tau))	
