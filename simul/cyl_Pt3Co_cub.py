@@ -25,6 +25,7 @@ sim = nmag.Simulation()
 def scalar_product(a, b): return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 sc = scalar_product
 
+material_name = 'Pt3Co'
 Ms0 = 400e3   # A/m
 A_ex = 0.66e-11	# J/m
 kmc = 0.45e5 # J/m^3 - MCA
@@ -66,7 +67,6 @@ def my_anisotropy(m):
 	a3 = sc(m, n3)
 	return K1*( a1**2 * a2**2 + a1**2 * a3**2 + a2**2 * a3**2 ) + B1*(a1**2 * eps1 + a2**2 * eps2 + a3**2 * eps3)
  
-material_name = 'CoFe'
 material = nmag.MagMaterial(name=material_name, 
 		Ms=SI(Ms0, "A/m"), 
 		exchange_coupling=SI(A_ex, "J/m"),
