@@ -32,7 +32,7 @@ kmc = 0.45e5 # J/m^3 - MCA
 
 # (-0.3 too long calc for D10_H20)
 
-tau = 0.3  # in GPa 
+tau = 0.1  # in GPa 
 #tau=-3.0  # in GPa
 
 start_magn_dir = [1, 1, 1]
@@ -120,7 +120,8 @@ for i in range(-50, 60, 10):
 
 	if m is not None:
 		val = sqrt(m[0]**2 + m[1]**2 + m[2]**2)
-		s = "i = {0:4}:  mx = {1:2.3}, mz = {2:2.3}".format(i , round(m[0], 2), round(m[2], 2))
+		s = "i = {0:4}:  mx = {1:2.3}, mz = {2:2.3}, my = {3:2.3}".\
+			format(i , round(m[0], 2), round(m[2], 2), round(m[1], 2))
 	else:
 		s = 'i = None'
 
