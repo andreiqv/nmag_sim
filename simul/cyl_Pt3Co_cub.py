@@ -27,7 +27,8 @@ sc = scalar_product
 
 material_name = 'Pt3Co'
 Ms0 = 400e3   # A/m
-A_ex = 0.66e-11	# J/m
+#A_ex = 0.66e-11	# J/m
+A_ex = 0.4e-11	# J/m
 kmc = 0.45e5 # J/m^3 - MCA
 
 # (-0.3 too long calc for D10_H20)
