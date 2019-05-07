@@ -8,7 +8,7 @@ os.system('rm *.vtk')
 
 #ls = ['cyl_15_100_af']
 #ls = ['cyl_20_100_af']
-ls = ['cyl_Pt3Co_cub']
+ls = ['cyl_CoNi_cub']
 
 
 for x in ls:
