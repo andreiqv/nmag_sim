@@ -32,7 +32,7 @@ kmc = 0.3e5 # J/m^3 - MCA
 
 # (-0.3 too long calc for D10_H20)
 
-tau = 1.8  # in GPa 
+tau = 1.6  # in GPa 
 #tau=-3.0  # in GPa
 
 start_magn_dir = [1, 1, 1]
