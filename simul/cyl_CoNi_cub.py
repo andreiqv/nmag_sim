@@ -43,7 +43,7 @@ kmc = 6.4e4 # J/m^3 - MCA
 #if len(sys.argv) > 1:
 #	tau = float(sys.argv[1])
 #else:
-tau = 2.0  # in GPa 
+tau = 3.0  # in GPa 
 
 # (-0.3 too long calc for D10_H20)
 
