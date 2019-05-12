@@ -26,9 +26,17 @@ def scalar_product(a, b): return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 sc = scalar_product
 
 material_name = 'CoNi'
+"""
+# var 1:
 Ms0 = 980e3   # A/m
 A_ex = 1.43e-11	# J/m
 kmc = 0.3e5 # J/m^3 - MCA
+"""
+# var 2:
+Ms0 = 1.08e6   # A/m
+A_ex = 0.45e-11	# J/m
+kmc = 6.4e4 # J/m^3 - MCA
+
 
 # (-0.3 too long calc for D10_H20)
 
