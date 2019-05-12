@@ -1,6 +1,7 @@
 #rm *.vtk; ./nsim/bin/nsim sphere_Co1.py --clean; 
 
 import os
+import sys
 
 os.system('rm *.vtk')
 

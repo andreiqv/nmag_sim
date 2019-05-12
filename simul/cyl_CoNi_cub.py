@@ -40,10 +40,10 @@ A_ex = 0.45e-11	# J/m
 kmc = 6.4e4 # J/m^3 - MCA
 
 
-if len(sys.argv) > 1:
-	tau = float(sys.argv[1])
-else:
-	tau = 0.0  # in GPa 
+#if len(sys.argv) > 1:
+#	tau = float(sys.argv[1])
+#else:
+tau = 0.0  # in GPa 
 
 # (-0.3 too long calc for D10_H20)
 
