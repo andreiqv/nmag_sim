@@ -8,6 +8,8 @@ nmesh = 'z_cylinder_D20_H100_h2.nmesh.h5'
 #nmesh = 'z_cylinder_D20_H200_h3.nmesh.h5'
 #nmesh = 'z_cylinder_D20_H400_h3.nmesh.h5'
 
+
+
 #--------------------------
 
 import nmag
@@ -38,10 +40,12 @@ A_ex = 0.45e-11	# J/m
 kmc = 6.4e4 # J/m^3 - MCA
 
 
-# (-0.3 too long calc for D10_H20)
+if len(sys.argv) > 1:
+	tau = float(sys.argv[1])
+else:
+	tau = 0.0  # in GPa 
 
-tau = 1.7  # in GPa 
-#tau=-3.0  # in GPa
+# (-0.3 too long calc for D10_H20)
 
 start_magn_dir = [1, 1, 1]
 
